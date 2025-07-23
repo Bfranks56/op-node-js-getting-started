@@ -6,11 +6,11 @@ const EventEmitter = require('node:events')
 const content = 'Some content!';
 const eventEmitter = new EventEmitter();
 
-eventEmitter.on('start', () => {
+eventEmitter.addListener('start', () => {
     console.log('Started event emitted');
 });
 
-eventEmitter.on('demtingz', (start, end) => {
+eventEmitter.addListener('demtingz', (start, end) => {
     console.log(`started event with number:  ${start} to ${end}`);
 });
 
