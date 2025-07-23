@@ -1,10 +1,21 @@
 const fs = require('node:fs');
 // use this import instead if using promises
 // const fs = require ('node:fs/promises');
-
+const EventEmitter = require('node:events')
 
 const content = 'Some content!';
+const eventEmitter = new EventEmitter();
 
+eventEmitter.on('start', () => {
+    console.log('Started event emitted');
+});
+
+eventEmitter.on('demtingz', (start, end) => {
+    console.log(`started event with number:  ${start} to ${end}`);
+});
+
+eventEmitter.emit('start');
+eventEmitter.emit('demtingz', 23, 100);
 // Asynchronously write to a file
 // flag 'a+' opens the file for reading and writing and also positions the stream at the end of the file
 fs.writeFile('./testUser/test.txt', content, {flag: 'a+'}, err => {
