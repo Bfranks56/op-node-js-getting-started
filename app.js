@@ -2,9 +2,10 @@ const fs = require('node:fs');
 // use this import instead if using promises
 // const fs = require ('node:fs/promises');
 
+
 const content = 'Some content!';
 
-// Asyncronously write to a file
+// Asynchronously write to a file
 // flag 'a+' opens the file for reading and writing and also positions the stream at the end of the file
 fs.writeFile('./testUser/test.txt', content, {flag: 'a+'}, err => {
     if (err) {
@@ -43,3 +44,32 @@ fs.writeFile('./testUser/test.txt', content, {flag: 'a+'}, err => {
 //         // done!
 //     }
 // });
+
+// Reading a file asynchronously
+fs.readFile('./testUser/test.txt', 'utf8', (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log(data);
+});
+
+// synchronously reading a file
+// try {
+//     const data = fs.readFileSync('./testUser/test.txt', 'utf8');
+//     console.log(data);
+// } catch (err) {
+//     console.error(err);
+// }
+
+// promise based read
+// async function example() {
+//     try {
+//         const data = await fs.readFile('./testUser/test.txt', {encoding: 'utf8'});
+//         console.log(data);
+//     } catch (err) {
+//         console.error(err);
+//     }
+
+//     example();
+// }
